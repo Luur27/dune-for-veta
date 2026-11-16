@@ -111,6 +111,7 @@ export function Article({
           <h2 ref={title} tabIndex={-1}>
             {term.name}
           </h2>
+          {term.actor && <small>{term.actor}</small>}
         </div>
       </div>
       <p className="definition">
@@ -139,7 +140,12 @@ export function Article({
           </button>
         ))}
       </div>
-      <p className="source">Источники · {term.sources.join(" · ")}</p>
+      <p className="source">
+        Источники · {term.sources.join(" · ")}
+        {term.stillSource && (
+          <> · <a href={term.stillSource} target="_blank" rel="noreferrer">Источник фотографии ↗</a></>
+        )}
+      </p>
     </article>
   );
 }

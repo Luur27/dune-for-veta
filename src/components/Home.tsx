@@ -121,12 +121,15 @@ export function Home({
           <h2>Лица Арракиса</h2>
         </div>
         <div className="faces">
-          {welcome.faces.map((id) => (
-            <button onClick={() => open(id)} key={id}>
-              <img loading="lazy" src={art(id)} alt="" />
-              <span>{termById.get(id)!.name} ↗</span>
-            </button>
-          ))}
+          {welcome.faces.map((id) => {
+            const person = termById.get(id)!;
+            return (
+              <button onClick={() => open(id)} key={id}>
+                <img loading="lazy" src={art(person.art)} alt="" />
+                <span>{person.name} ↗</span>
+              </button>
+            );
+          })}
         </div>
       </section>
       <section className="journal shell">
